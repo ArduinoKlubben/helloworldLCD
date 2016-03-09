@@ -1,0 +1,27 @@
+//För denna modul använder vi oss av ett färdigt bibliotek som följer med i Arduino-programmet. 
+//En standard LCD har 2x16 platser för tecken, och platserna numreras med radnummer 0 eller 1, 
+//samt platsnummer 1-16, via dessa styr man vart man vill påbörja sin print. 
+//EXEMPEL -  lcd.setCursor(0, 0), första platsen, i första raden.  
+// Skriven 1-Mar-16, Granit D. Alex C.
+
+
+
+//Inkludera bibliotek
+#include <LiquidCrystal.h>
+
+//Aktivera LCD skärmen, genom att ange vilka pins den kommer in och ut genom. 
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+void setup() {
+    
+  lcd.begin(16, 2); 			// Deklarera antal rader och platser på LCD.
+
+  lcd.print("hello, world!");   // Skicka ut ett första meddelande
+}
+
+void loop() {
+  
+  lcd.setCursor(0, 1); // Anger första platsen på andra raden. 
+  
+  lcd.print(millis() / 1000); // Printar ut antal sekunder sen start
+}
